@@ -14,11 +14,13 @@ from datetime import datetime, timezone, timedelta
 ### CONSTANTS 
 
 # BEARER_TOKEN = ""
-BASE_URL = ' http://vpn.aurora2.vibracom.eu/tui'
+CAMERA_URL = 'http://vpn.aurora2.vibracom.eu/tui'
+BASE_URL   = 'http://api.aurora2.vibracom.eu/tui'
 EXTENSION_EVENT = '/event'
 EXTENSION_LOGIN = '/login'
 EXTENSION_ZONE = '/zone'
 EXTENSION_PLATES = '/plates'
+EXTENSION_PLATE = '/plate'
 EXTENSION_ADD = '/add'
 EXTENSION_DEL = '/delete'
 EXTENSION_INFRACTIONS = '/infractions' 
@@ -83,9 +85,8 @@ def get_items(url, header):
 
 def post_item(url, headers, detected_at, plate, filename, id_camera, inout):
     parameters = f'detected_at={str(detected_at)}&plate={plate}&filename={filename}&id_camera={id_camera}&inout={inout}'
-    return requests.post(url, headers = headers, data = parameters)
-    # response = requests.post(BASE_URL+EXTENSION_BLUE+parameters)  # not really necesary to assign to a variable
-    # get = response.json()
+    response = requests.post(url, headers = headers, data = parameters)
+    return json.loads(response.content), response.status_code
     # print(get)            # should be none or null bc the POST request just sends data, not receives  
 
 

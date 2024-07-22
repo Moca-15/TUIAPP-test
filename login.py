@@ -1,20 +1,19 @@
 import utils as u       # file with all needed functions
-import test_user as s
+from test_user import json_user
 
 
 url = u.BASE_URL + u.EXTENSION_LOGIN
 
-parameters = f'{{"user":"{s.user}", "password":"{s.password}"}}'
-
-response = u.requests.post(url, headers=u.HEADERS2, data=parameters)
-print(response.content)
+response = u.requests.post(url, headers=u.HEADERS2, json=json_user)
+print(response)
 response_def = u.json.loads(response.content)  
+print(response_def)
 
 status = response_def["status"]
-#message = response_def["message"]
+message = response_def["message"]
 
 
-print(response_def)
+#print(response_def)
 
 u.subtest(0, 'POST', status, 0)
 
@@ -31,7 +30,6 @@ if status == 0:
 match status:
     case 0:
         u.print_test_result(0, True, "Login succesful", f'token={token}; id_user={id_user}; name={name}')
-'''
     case 1:
         u.print_test_result(0, False, "Login error", f'STATUS 1:{message}')
     case 2:
@@ -39,5 +37,3 @@ match status:
     case 3:
         u.print_test_result(0, False, "Login error", f'STATUS 3:{message}')
 
-
-'''
