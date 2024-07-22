@@ -1,11 +1,11 @@
 import utils as u       # file with all needed functions
 import test_plate as p
 
-### TEST 3:  Checks if the plate is expired, if it is issueaas an infraction (posts an infraction to the black list with automatic tag)
+### TEST 3:  Checks if the plate is expired, if it is check if it got an infraction
 ###     PASS : [The plate is inside its timeout] or [The plate is not inside its timeout and an infraction has been posted (it's inside the infraction list)]  
 ###     FAIL : [The plate is not inside its timeout and is not inside the infraction list]
 
-url = u.BASE_URL+u.EXTENSION_BLUE
+url = u.BASE_URL+u.EXTENSION_INFRACTIONS
 
 # Logic
 time_in      = ""

@@ -21,6 +21,7 @@ EXTENSION_ZONE = '/zone'
 EXTENSION_PLATES = '/plates'
 EXTENSION_ADD = '/add'
 EXTENSION_DEL = '/delete'
+EXTENSION_INFRACTIONS = '/infractions' 
 
 bearer_token = ''
 HEADERS1 = {

@@ -8,8 +8,8 @@ id_camera = '20'
 zone = 'azul'
 inout = '0'             # 0 = in ; 1 = out
 
-
-until = "2024-07-15 18:00:00"
+time_from = "2024-07-10 00:00:00" 
+time_until = "2024-07-15 18:00:00"
 
 
 # print(created_at)
