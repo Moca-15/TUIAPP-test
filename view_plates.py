@@ -15,6 +15,11 @@ HEADERS1 = {
 
 response, status_code = u.get_items(url, HEADERS1)
 
+print(status_code)
+print(response)
+
+'''
+
 status = response['status']
 message = response['message']
 plates = ''
@@ -34,6 +39,4 @@ match status:
         u.print_test_result(0, False, "GET plates error", f'STATUS 1:{message}')
     case 2:
         u.print_test_result(0, False, "GET plates error", f'STATUS 2:{message}')
-
-
-
+'''

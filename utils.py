@@ -67,7 +67,6 @@ def subtest(query_num, query_type, status_code, correct_status):
         print(color.GREEN + "OK" + color.END)
     else:
         print(color.RED + "NOK" + color.END)
-        print(color.YELLOW + "status code: " + status_code + color.END)
 
 
 
