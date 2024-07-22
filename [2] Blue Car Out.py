@@ -5,42 +5,31 @@ import test_plate as p
 ###     PASS : A set plate that was in the list is removed(is not in the list the second time it is checked)
 ###     FAIL : Either the plate was not in the list, the plate is not removed correctly, or the plate is somehow added
 
-# This test is the exact same as TEST 2, just make sure here that the inout param is set to 0
+# This test is the exact same as TEST 1, just make sure here that the inout param is set to 1
 
-url = u.BASE_URL+u.EXTENSION_BLUE
+url = u.BASE_URL+u.EXTENSION_EVENT
 
 # Logic
-list, status_code = u.get_items(url)
-before = u.list_plates(list)
-u.subtest(1, "GET ", status_code)
+response, status_code = u.post_item(url, u.HEADERS2, p.detected_at, p.plate, p.filename, p.id_camera, '0')    # p.inout
+status = response['status']
 
-u.post_item(url, p.plate, p.created_at, p.filename, p.id_camera, '1')    # p.inout
-u.subtest(2, "POST", status_code)
+u.subtest(2, "POST", status, 0)
 
-list, status_code = u.get_items(url)
-after = u.list_plates(list)
-u.subtest(3, "GET ", status_code)
-
-
-# Results
-success = False
-status = ""
-warning = ""
-
-if   (p.plate not in before) and (p.plate in after):
-    success = False
-    status = "A new plate was added to the database somehow"
-elif (p.plate not in before) and (p.plate not in after):
-    success = False
-    status = "Unexisting plate not deleted from database"
-    warning = "Expected the target plate to be inside the database"
-elif (p.plate in before)     and (p.plate in after):
-    success = False 
-    status = "Plate was not deleted from database"
-    warning = "Expected the value of inout of the test_plate to be 1, consider cheking"
-elif (p.plate in before)     and (p.plate not in after):
-    success = True
-    status = "Plate was successfully deleted from database"
+match status:
+    case 0:
+        u.print_test_result(2, True, "Plate removed succesfully", '')
+    case 1:
+        u.print_test_result(2, False, "Plate not removed", 'CODE 1: Client no permès')
+    case 2:
+        u.print_test_result(2, False, "Plate not removed", 'CODE 2: Falta el json, error de sintaxis del json')
+    case 3:
+        u.print_test_result(2, False, "Plate not removed", 'CODE 3: Operació desconeguda')
+    case 4:
+        u.print_test_result(2, False, "Plate not removed", 'CODE 4: Falta algun paràmetre al json')
+    case 5:
+        u.print_test_result(2, False, "Plate not removed", 'CODE 5: Error accedint a la BDD')
+    case 6:
+        u.print_test_result(2, False, "Plate not removed", 'CODE 6: Error intern desconegut')
 
 
-u.print_test_result(2, success, status, warning)
+

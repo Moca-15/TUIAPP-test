@@ -6,7 +6,6 @@ import test_plate as p
 ###     FAIL : [The plate is not inside its timeout and is not inside the infraction list]
 
 url = u.BASE_URL+u.EXTENSION_BLUE
-url_black = u.BASE_URL+u.EXTENSION_BLACK
 
 # Logic
 time_in      = ""

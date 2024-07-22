@@ -7,42 +7,30 @@ import test_plate as p
 
 # This test is the exact same as TEST 2, just make sure here that the inout param is set to 0
 
-url = u.BASE_URL+u.EXTENSION_BLUE
+url = u.BASE_URL+u.EXTENSION_EVENT
 
 # Logic
-list, status_code = u.get_items(url)
-before = u.list_plates(list)
-u.subtest(1, "GET ", status_code)
 
-u.post_item(url, p.plate, p.created_at, p.filename, p.id_camera, '0')    # p.inout
-u.subtest(2, "POST", status_code)
+response, status_code = u.post_item(url, u.HEADERS2, p.detected_at, p.plate, p.filename, p.id_camera, '0')    # p.inout
+status = response['status']
 
-list, status_code = u.get_items(url)
-after = u.list_plates(list)
-u.subtest(3, "GET ", status_code)
+u.subtest(1, "POST", status, 0)
 
-
-# Results
-success = False
-status = ""
-warning = ""
-
-
-if   (p.plate not in before) and (p.plate in after):
-    success = True
-    status = "New plate added to the database"
-elif (p.plate not in before) and (p.plate not in after):
-    success = False
-    status = "New plate not added to database"
-    warning = "Expected the value of inout of the test_plate to be 0, consider cheking"
-elif (p.plate in before)     and (p.plate in after):
-    success = False 
-    status = "New plate already in database"
-    warning = "Run Test for duplicate elements check"
-elif (p.plate in before)     and (p.plate not in after):
-    success = False
-    status = "Idk how can this even happen"
-    warning = "please check the inout parameter, should equal 0 for this case"
+match status:
+    case 0:
+        u.print_test_result(1, True, "Plate posted succesfully", '')
+    case 1:
+        u.print_test_result(1, False, "Plate not posted", 'CODE 1: Client no permès')
+    case 2:
+        u.print_test_result(1, False, "Plate not posted", 'CODE 2: Falta el json, error de sintaxis del json')
+    case 3:
+        u.print_test_result(1, False, "Plate not posted", 'CODE 3: Operació desconeguda')
+    case 4:
+        u.print_test_result(1, False, "Plate not posted", 'CODE 4: Falta algun paràmetre al json')
+    case 5:
+        u.print_test_result(1, False, "Plate not posted", 'CODE 5: Error accedint a la BDD')
+    case 6:
+        u.print_test_result(1, False, "Plate not posted", 'CODE 6: Error intern desconegut')
 
 
-u.print_test_result(1, success, status, warning)
+

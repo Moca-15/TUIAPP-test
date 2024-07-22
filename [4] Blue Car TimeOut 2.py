@@ -1,7 +1,7 @@
 import utils as u       # file with all needed functions
 import test_plate as p
 
-### TEST 3:  Checks if the plate is expired, if it is issueaas an infraction (posts an infraction to the black list with automatic tag)
+### TEST 4:  Checks if the plate is expired, if it is issueaas an infraction (posts an infraction to the black list with automatic tag)
 ###     PASS : [The plate is inside its timeout] or [The plate is not inside its timeout and an infraction has been posted (it's inside the infraction list)]  
 ###     FAIL : [The plate is not inside its timeout and is not inside the infraction list]
 

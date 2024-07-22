@@ -1,19 +1,14 @@
 import utils as u
 
 
-url = u.BASE_URL+u.EXTENSION_ZONE+'/1'
+url = u.BASE_URL+u.EXTENSION_PLATES+'/1'
 # 1: blue
 # 2: orange
 # 3: green
 
 
-bearer_token = ''
-HEADERS1 = {
-    'Authorization': f'Bearer {bearer_token}',
-    'Content-Type': 'application/json'
-}
 
-response, status_code = u.get_items(url, HEADERS1)
+response, status_code = u.get_items(url, u.HEADERS1)
 
 status = response['status']
 message = response['message']
@@ -29,11 +24,9 @@ for plate in plates:
 
 match status:
     case 0:
-        u.print_test_result(0, True, "GET plates succesful", f'token={bearer_token}')
+        u.print_test_result(0, True, "GET plates succesful", f'token={u.bearer_token}')
     case 1:
         u.print_test_result(0, False, "GET plates error", f'STATUS 1:{message}')
     case 2:
         u.print_test_result(0, False, "GET plates error", f'STATUS 2:{message}')
-
-
 

@@ -13,10 +13,24 @@ from datetime import datetime, timezone, timedelta
 
 ### CONSTANTS 
 
-BASE_URL = 'https://c60d32ofo0.execute-api.eu-central-1.amazonaws.com'
-EXTENSION_BLUE = '/BlueList?'
-EXTENSION_BLACK =''
+# BEARER_TOKEN = ""
+BASE_URL = ' http://vpn.aurora2.vibracom.eu/tui'
+EXTENSION_EVENT = '/event'
+EXTENSION_LOGIN = '/login'
+EXTENSION_ZONE = '/zone'
+EXTENSION_PLATES = '/plates'
+EXTENSION_ADD = '/add'
+EXTENSION_DEL = '/delete'
 
+bearer_token = ''
+HEADERS1 = {
+    'Authorization': f'Bearer {bearer_token}',
+    'Content-Type': 'application/json'
+}
+
+HEADERS2 = {
+    'Content-Type': 'application/json'
+}
 
 PRESENT_TIME = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 TIMEOUT = 3600      # in second
@@ -35,7 +49,6 @@ class color:
    UNDERLINE = '\033[4m'
    END = '\033[0m'
 
-
 def print_test_result(test_num, success, status, warning):
     print('\n\t' + color.BOLD + 'TEST ' + str(test_num) + color.END, end= '  ')
     if success == True:
@@ -47,12 +60,13 @@ def print_test_result(test_num, success, status, warning):
         print(color.YELLOW + warning + color.END)
     print("\n")
 
-def subtest(query_num, query_type, status_code):
+def subtest(query_num, query_type, status_code, correct_status):
     print(str(query_num) + ' ' + query_type + "   Status code: " + str(status_code), end=" ")
-    if status_code == 200:
+    if status_code == correct_status:
         print(color.GREEN + "OK" + color.END)
     else:
         print(color.RED + "NOK" + color.END)
+        print(color.YELLOW + "status code: " + status_code + color.END)
 
 
 
@@ -60,16 +74,16 @@ def subtest(query_num, query_type, status_code):
 
 ## QUERIES
 
-def get_items(url):
-    list = requests.get(url)                    # sends the GET request
-    blue_items = json.loads(list.content)       # deserialize json instance to a python object blue_list,
-    return blue_items, list.status_code                           #  we get the deserialization of a json object that contains the llist of elements in the blue database
+def get_items(url, header):
+    list = requests.get(url, headers = header)                  # sends the GET request
+    list_items = json.loads(list.content)                       # deserialize json instance to a python object blue_list,
+    return list_items, list.status_code                         # we get the deserialization of a json object that contains the llist of elements in the blue database
 
 
 
-def post_item(url, plate, created_at, filename, id_camera, inout):
-    parameters = 'plate='+plate+'&created_at='+str(created_at)+'&filename='+filename+'&id_camera='+id_camera+'&inout='+inout
-    return requests.post(url+parameters)
+def post_item(url, headers, detected_at, plate, filename, id_camera, inout):
+    parameters = f'detected_at={str(detected_at)}&plate={plate}&filename={filename}&id_camera={id_camera}&inout={inout}'
+    return requests.post(url, headers = headers, data = parameters)
     # response = requests.post(BASE_URL+EXTENSION_BLUE+parameters)  # not really necesary to assign to a variable
     # get = response.json()
     # print(get)            # should be none or null bc the POST request just sends data, not receives  
