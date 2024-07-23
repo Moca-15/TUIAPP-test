@@ -1,5 +1,5 @@
 import utils as u       # file with all needed functions
-from test_plate import json_plates, json_infractions, plate
+from test_plate import json_plates_no_phone, json_infractions, plate
 
 ### TEST 3:  Checks if the plate is expired, if it is check if it got an infraction
 ###     PASS : [The plate is inside its timeout & no infraction] or [The plate is not inside its timeout and an infraction has been posted (it's inside the infraction list)]  
@@ -13,8 +13,9 @@ url_infraction = u.BASE_URL+u.EXTENSION_INFRACTIONS
 
 # plate's remaining time
 
-
-response1 = u.requests.post(url_plate, headers = u.HEADERS2, json=json_plates)
+print("url_plate {} - headers {} - json {}".format(url_plate, u.HEADERS2, json_plates_no_phone))
+response1 = u.requests.post(url_plate, headers = u.HEADERS2, json=json_plates_no_phone)
+print("response1 status_code {} content {}".format(response1.status_code, response1.content))
 response1_def = u.json.loads(response1.content)  
 # em sembla que ara peta perquè retorna un json buit o en un altre fromat i no es pot decodificar bé
 
@@ -31,6 +32,7 @@ u.subtest(1, 'POST', status_plate, 0)
 
 
 # wheter it got an infraction (need token!)
+u.HEADERS1['Authorization'] = 'Bearer {}'.format(u.getToken(2))
 response2 = u.requests.post(url_infraction, headers = u.HEADERS1, json=json_infractions)
 response2_def = u.json.loads(response2.content)  
 

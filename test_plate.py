@@ -30,6 +30,10 @@ json_plates ={
     'notify': notify
 }
 
+json_plates_no_phone ={
+    'plate': plate
+}
+
 json_infractions = {
     'id_zone': zone,
     'from': time_from,

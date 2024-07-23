@@ -11,11 +11,14 @@ import json
 
 from datetime import datetime, timezone, timedelta
 
+import traceback
+from time import gmtime
+
 ### CONSTANTS 
 
 # BEARER_TOKEN = ""
 CAMERA_URL = 'http://vpn.aurora2.vibracom.eu/tui'
-BASE_URL   = 'http://api.aurora2.vibracom.eu/tui'
+BASE_URL   = 'https://api.aurora2.vibracom.eu/tui'
 EXTENSION_EVENT = '/event'
 EXTENSION_LOGIN = '/login'
 EXTENSION_ZONE = '/zone'
@@ -120,3 +123,47 @@ def check_infraction(url, plate, past_time, timeout_time, current_time):
     return status_code, 0
 
 
+# get token
+
+def getTokenApi(user, password, url="https://api.aurora2.vibracom.eu/tui/login"):
+    addLog("=> getToken")
+    json = {"user":user, "password":password}
+    addLog("Will send {} to {}".format(json, url))
+    try:
+        response = requests.post(url, json=json)
+        addLog("Code: {} - response: {}".format(response.status_code, response.content))
+        if response.status_code != 200:
+            addLog("ERROR")
+            addLog("<= getToken 1")
+            return False
+        addLog("<= getToken 2")
+        return response.json()        
+    except Exception as e:
+        addLog("Error: {}".format(e))
+        addLog(traceback.format_exc())
+        addLog("<= getToken 3")
+        return False    
+    
+def GetPrettyStrDateTime():
+    currDateTime = gmtime()
+    return "{}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}".format(currDateTime[0], currDateTime[1], currDateTime[2], currDateTime[3], currDateTime[4], currDateTime[5])
+
+def addLog(logstr, showTime=True, endSymbol="\n"):
+    if showTime:
+        iniLogStr = "{} > ".format(GetPrettyStrDateTime())
+    else:
+        iniLogStr = ""
+    print(iniLogStr, end="")
+    print(logstr.strip(), end=endSymbol)  
+    with open("./trace.log", 'a') as file: 
+            file.write(iniLogStr + logstr.strip() + endSymbol)  
+
+def getToken(userType = 0):
+
+    # users: 0 -> ajuntament, 1 -> veï, 2 -> policia
+    users = [["user1", "password1"], ["user3", "password3"],["agent1", "password5"]]
+
+    response = getTokenApi(users[userType][0], users[userType][1])
+    assert(response != False)
+    assert("token" in response)
+    return response["token"]
