@@ -7,13 +7,8 @@ url = u.BASE_URL+u.EXTENSION_ZONE+'/1'
 # 3: green
 
 
-bearer_token = ''
-HEADERS1 = {
-    'Authorization': f'Bearer {bearer_token}',
-    'Content-Type': 'application/json'
-}
 
-response, status_code = u.get_items(url, HEADERS1)
+response, status_code = u.get_items(url, u.HEADERS1)
 
 print(status_code)
 print(response)

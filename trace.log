@@ -1,0 +1,64 @@
+2024-07-23 09:45:14 > => getToken
+2024-07-23 09:45:14 > Will send {'user': 'user1', 'password': 'password1'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 09:45:14 > Code: 200 - response: b'{"status":0,"message":"ok","token":"usu941tsYZWXb3wdBqWJOw=="}'
+2024-07-23 09:45:14 > <= getToken 2
+2024-07-23 09:51:42 > => getToken
+2024-07-23 09:51:42 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 09:51:42 > Code: 200 - response: b'{"status":0,"message":"ok","token":"zV+DYjYZxla6JnfAPPphEQ==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 09:51:42 > <= getToken 2
+2024-07-23 09:54:36 > => getToken
+2024-07-23 09:54:36 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 09:54:36 > Code: 200 - response: b'{"status":0,"message":"ok","token":"P9sHTIzpF9fRJR8uA3lb8w==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 09:54:36 > <= getToken 2
+2024-07-23 09:58:24 > => getToken
+2024-07-23 09:58:24 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 09:58:25 > Code: 200 - response: b'{"status":0,"message":"ok","token":"a/e1Dzp/q8F96/ECSEExHA==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 09:58:25 > <= getToken 2
+2024-07-23 09:59:24 > => getToken
+2024-07-23 09:59:24 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 09:59:24 > Code: 200 - response: b'{"status":0,"message":"ok","token":"JM/HA5KQ3LC2bEvnQwoaFw==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 09:59:24 > <= getToken 2
+2024-07-23 10:05:36 > => getToken
+2024-07-23 10:05:36 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:05:36 > Code: 200 - response: b'{"status":0,"message":"ok","token":"qwOL7kzy2Ks+y58xVPs+Cg==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:05:36 > <= getToken 2
+2024-07-23 10:16:49 > => getToken
+2024-07-23 10:16:49 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:16:49 > Code: 200 - response: b'{"status":0,"message":"ok","token":"Sw7EIDqB4OlSY9caA8LChw==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:16:49 > <= getToken 2
+2024-07-23 10:17:34 > => getToken
+2024-07-23 10:17:34 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:17:34 > Code: 200 - response: b'{"status":0,"message":"ok","token":"tgooDlIUlj6a5C0qeqGjjg==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:17:34 > <= getToken 2
+2024-07-23 10:18:09 > => getToken
+2024-07-23 10:18:09 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:18:09 > Code: 200 - response: b'{"status":0,"message":"ok","token":"xAWKRxtHzByGwpXLUulnxw==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:18:09 > <= getToken 2
+2024-07-23 10:25:18 > => getToken
+2024-07-23 10:25:18 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:25:18 > Code: 200 - response: b'{"status":0,"message":"ok","token":"1FNTfXYFClu3nOy1ArGEHQ==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:25:18 > <= getToken 2
+2024-07-23 10:26:13 > => getToken
+2024-07-23 10:26:13 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:26:13 > Code: 200 - response: b'{"status":0,"message":"ok","token":"5LhoJhs7WPmLl0Ea64uhBQ==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:26:13 > <= getToken 2
+2024-07-23 10:26:24 > => getToken
+2024-07-23 10:26:24 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:26:24 > Code: 200 - response: b'{"status":0,"message":"ok","token":"p0cGDgw3Po606Xd4DMIwiA==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:26:24 > <= getToken 2
+2024-07-23 10:26:51 > => getToken
+2024-07-23 10:26:51 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:26:51 > Code: 200 - response: b'{"status":0,"message":"ok","token":"KIB5tlVCHf0VTfpt4Z5qfQ==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:26:51 > <= getToken 2
+2024-07-23 10:27:21 > => getToken
+2024-07-23 10:27:21 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:27:21 > Code: 200 - response: b'{"status":0,"message":"ok","token":"crdoLoMi9l+PQCi/T/cpLg==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:27:21 > <= getToken 2
+2024-07-23 10:28:08 > => getToken
+2024-07-23 10:28:08 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:28:08 > Code: 200 - response: b'{"status":0,"message":"ok","token":"CAttSS3yDEkmZlknnFK1eQ==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:28:08 > <= getToken 2
+2024-07-23 10:32:28 > => getToken
+2024-07-23 10:32:28 > Will send {'user': 'agent1', 'password': 'password5'} to https://api.aurora2.vibracom.eu/tui/login
+2024-07-23 10:32:29 > Code: 200 - response: b'{"status":0,"message":"ok","token":"hRr084lzmjAligfu+HN6SA==","id_agent":"1","agentname":"Roger Trias","agentrole":"police"}'
+2024-07-23 10:32:29 > <= getToken 2

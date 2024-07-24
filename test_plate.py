@@ -1,12 +1,13 @@
-from utils import PRESENT_TIME
+from utils import PRESENT_TIME, PAST_TIME
 
 # Set parameters of the Test Plate. some tests do not use all parameters
 detected_at = PRESENT_TIME
-plate = '1023CCC'
+#detected_at = PAST_TIME
+plate = '1010XXX'
 filename = 'hhtps'
 id_camera = '20'
 zone = 'azul'
-inout = '1'             # 0 = in ; 1 = out
+inout = '0'             # 0 = in ; 1 = out
 
 
 time_from = "2024-07-10 00:00:00" 

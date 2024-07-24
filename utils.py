@@ -38,9 +38,9 @@ HEADERS2 = {
     'Content-Type': 'application/json'
 }
 
-PRESENT_TIME = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
-TIMEOUT = 3600      # in second
 
+PAST_TIME = "2024-07-23 08:25:00"
+PRESENT_TIME = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
 ### FANCY FUNCTIONS
 class color:
@@ -103,7 +103,7 @@ def list_plates(items):
 
 
 
-
+'''
 # returns 3 datetime objects
 def calc_timeout(time_in):
     # these are not strings, these are all datetime vars 
@@ -121,7 +121,7 @@ def check_infraction(url, plate, past_time, timeout_time, current_time):
         if (i['License'] == plate) and i['agent_id'] == '0':
             return status_code, 1
     return status_code, 0
-
+'''
 
 # get token
 
@@ -167,3 +167,4 @@ def getToken(userType = 0):
     assert(response != False)
     assert("token" in response)
     return response["token"]
+

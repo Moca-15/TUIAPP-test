@@ -17,7 +17,7 @@ print("url_plate {} - headers {} - json {}".format(url_plate, u.HEADERS2, json_p
 response1 = u.requests.post(url_plate, headers = u.HEADERS2, json=json_plates_no_phone)
 print("response1 status_code {} content {}".format(response1.status_code, response1.content))
 response1_def = u.json.loads(response1.content)  
-# em sembla que ara peta perquè retorna un json buit o en un altre fromat i no es pot decodificar bé
+## the remaining time is negative
 
 status_plate = response1_def["status"]
 message = response1_def["message"]
@@ -54,7 +54,8 @@ success = False
 st = ""
 warning = ""
 
-
+print(response2_def)
+print (infractions)
 
 plate_infracted = any(event['plate'] == plate for event in infractions)  #list comprehension returns true if plate is found in the infractions database
 
